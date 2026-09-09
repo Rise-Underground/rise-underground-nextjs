@@ -58,49 +58,6 @@ body {
   margin: 0 auto;
   padding: 56px 28px 90px;
 }
-nav.topnav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  padding: 14px 28px;
-  border-bottom: 1px solid var(--border);
-  background: rgba(9,11,16,0.92);
-  backdrop-filter: blur(6px);
-  position: sticky;
-  top: 0;
-  z-index: 20;
-}
-.brand-block {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.brand-logo {
-  height: 92px;
-  width: auto;
-  display: block;
-  filter: drop-shadow(0 0 10px rgba(217,164,65,0.45));
-}
-.brand-fallback {
-  font-family: var(--font-oswald), sans-serif;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  font-size: 20px;
-  text-transform: uppercase;
-  color: var(--text);
-}
-.tagline {
-  font-family: var(--font-plex-mono), monospace;
-  font-size: 12px;
-  letter-spacing: 0.1em;
-  color: var(--muted);
-  text-transform: uppercase;
-}
-.nav-links {
-  display: flex;
-  gap: 10px;
-}
 .hero-watermark {
   position: absolute;
   top: -14px;
@@ -113,23 +70,6 @@ nav.topnav {
   pointer-events: none;
   user-select: none;
   z-index: 0;
-}
-nav.topnav a {
-  font-family: var(--font-oswald), sans-serif;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--muted);
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-nav.topnav a:hover,
-nav.topnav a:focus-visible {
-  color: var(--gold);
-}
-nav.topnav a.current {
-  color: var(--ember);
 }
 .eyebrow {
   font-family: var(--font-plex-mono), monospace;

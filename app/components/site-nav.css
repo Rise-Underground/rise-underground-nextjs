@@ -1,0 +1,65 @@
+/* Shared top-nav styling — source of truth is POA Tracker's original look.
+   Imported identically by POA Tracker, RISE Tracker, and IR Almanac.
+   Leaderboard is NOT included — it keeps its own separate nav. */
+
+.brand-block { display: flex; align-items: center; gap: 14px; }
+.brand-logo { height: 92px; width: auto; display: block; filter: drop-shadow(0 0 10px rgba(217,164,65,0.4)); }
+.brand-fallback {
+  font-family: var(--font-oswald), sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  font-size: 14px;
+  text-transform: uppercase;
+  color: #ede6d6;
+}
+.tagline {
+  font-family: var(--font-plex-mono), monospace;
+  font-size: 15px;
+  letter-spacing: 0.1em;
+  color: #8a8175;
+  text-transform: uppercase;
+}
+
+nav.topnav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  padding: 14px 20px;
+  background: rgba(10,9,8,0.92);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid #2a241c;
+}
+.nav-links { display: flex; align-items: center; gap: 10px; }
+nav.topnav a {
+  font-family: var(--font-oswald), sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #8a8175;
+  text-decoration: none;
+  border: 1px solid #2a241c;
+  padding: 7px 13px;
+  border-radius: 6px;
+  transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+  white-space: nowrap;
+}
+nav.topnav a:hover, nav.topnav a:focus-visible {
+  color: #f2c057;
+  border-color: #d9a441;
+  background: rgba(217,164,65,0.1);
+  outline: none;
+}
+nav.topnav a.current {
+  color: #d9a441;
+  border-color: #d9a441;
+  background: rgba(217,164,65,0.1);
+}
+@media (max-width: 760px) {
+  nav.topnav { flex-direction: column; align-items: stretch; gap: 14px; }
+  .nav-links { justify-content: center; flex-wrap: wrap; }
+}
