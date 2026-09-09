@@ -49,27 +49,6 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:
 #disclaimer-modal button:hover{background:var(--gold-bright);}
 
 /* ---------- header ---------- */
-.brand-block{display:flex;align-items:center;gap:14px;}
-.brand-logo{height:92px;width:auto;display:block;filter:drop-shadow(0 0 10px rgba(217,164,65,0.4));}
-.brand-fallback{font-family:var(--font-display);font-weight:700;letter-spacing:0.08em;font-size:14px;text-transform:uppercase;color:var(--text);}
-.tagline{font-family:var(--font-mono);font-size:15px;letter-spacing:0.1em;color:var(--dim);text-transform:uppercase;}
-
-nav.topnav{
-  position:sticky;top:0;z-index:20;
-  display:flex;align-items:center;justify-content:space-between;gap:28px;
-  padding:14px 20px;background:rgba(10,9,8,0.92);backdrop-filter:blur(6px);
-  border-bottom:1px solid var(--line);
-}
-.nav-links{display:flex;align-items:center;gap:28px;}
-nav.topnav a{
-  font-family:var(--font-display);font-size:13px;font-weight:600;letter-spacing:0.14em;
-  text-transform:uppercase;color:var(--dim);text-decoration:none;
-  padding:6px 4px;border-bottom:1px solid transparent;
-  transition:color 0.2s ease, border-color 0.2s ease;
-}
-nav.topnav a:hover, nav.topnav a:focus-visible{color:var(--gold-bright);border-color:var(--gold-bright);outline:none;}
-nav.topnav a.current{color:var(--gold);}
-
 .last-updated-bar{text-align:center;padding:8px 20px 0;}
 .last-updated{font-family:var(--font-mono);font-size:11px;color:var(--dim);letter-spacing:1px;}
 .last-updated .dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--gold);margin-right:6px;vertical-align:middle;}
@@ -95,10 +74,7 @@ header p{margin:10px 0 0;color:var(--dim);font-size:13px;font-family:var(--font-
 }
 .nft-mode-tab:hover{color:var(--gold-bright);border-color:var(--gold);}
 .nft-mode-tab.active{color:var(--text);border-color:var(--gold);background:rgba(217,164,65,0.1);}
-@media (max-width:760px){
-  nav.topnav{flex-direction:column;align-items:stretch;gap:14px;}
-  .nav-links{justify-content:center;flex-wrap:wrap;}
-}
+
 
 /* ---------- item search ---------- */
 .nft-search-wrap{position:relative;max-width:420px;margin:0 auto 28px;}
