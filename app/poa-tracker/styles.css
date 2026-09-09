@@ -1,0 +1,268 @@
+:root{
+  /* Palette converged with leaderboard.html and ir_almanac.html --
+     warm near-black, gold primary accent, crimson secondary accent, warm
+     off-white text. Rarity-tier colors (Common/Uncommon/Rare/Legendary/
+     Mythic) are left as their own semantic system further down -- those
+     encode game data, not site branding, so they're untouched. */
+  --bg:#0a0908;
+  --panel:#14120f;
+  --panel-2:#1c1712;
+  --line:#2a241c;
+  --text:#ede6d6;
+  --dim:#8a8175;
+  --dimmer:#564f43;
+  --gold:#d9a441;
+  --gold-bright:#f2c057;
+  --crimson:#c81e1e;
+  --ada-chain:#c81e1e;
+  --base-chain:#6f8fc4;
+  --font-mono:var(--font-plex-mono), ui-monospace, monospace;
+  --font-body:var(--font-inter), system-ui, sans-serif;
+  --font-display:var(--font-oswald), 'Arial Narrow', sans-serif;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:var(--font-body);}
+::selection{background:var(--gold);color:#0a0908;}
+
+/* ---------- disclaimer modal ---------- */
+#disclaimer-overlay{
+  position:fixed;inset:0;background:rgba(10,9,8,0.82);backdrop-filter:blur(4px);
+  display:flex;align-items:center;justify-content:center;z-index:1000;padding:20px;
+}
+#disclaimer-overlay.hidden{display:none;}
+#disclaimer-modal{
+  background:var(--panel);border:1px solid var(--line);border-radius:12px;
+  max-width:520px;width:100%;padding:26px 28px;box-shadow:0 12px 40px rgba(0,0,0,0.5);
+}
+#disclaimer-modal h2{
+  margin:0 0 14px 0;font-family:var(--font-display);font-weight:700;font-size:18px;
+  letter-spacing:0.04em;text-transform:uppercase;color:var(--gold-bright);
+}
+#disclaimer-modal p{
+  margin:0 0 20px 0;font-size:14px;line-height:1.6;color:var(--text);
+}
+#disclaimer-modal button{
+  background:var(--gold);color:#0a0908;border:none;border-radius:6px;
+  padding:10px 22px;font-family:var(--font-body);font-weight:600;font-size:14px;
+  cursor:pointer;transition:background 0.15s ease;
+}
+#disclaimer-modal button:hover{background:var(--gold-bright);}
+
+/* ---------- header ---------- */
+.brand-block{display:flex;align-items:center;gap:14px;}
+.brand-logo{height:92px;width:auto;display:block;filter:drop-shadow(0 0 10px rgba(217,164,65,0.4));}
+.brand-fallback{font-family:var(--font-display);font-weight:700;letter-spacing:0.08em;font-size:14px;text-transform:uppercase;color:var(--text);}
+.tagline{font-family:var(--font-mono);font-size:15px;letter-spacing:0.1em;color:var(--dim);text-transform:uppercase;}
+
+nav.topnav{
+  position:sticky;top:0;z-index:20;
+  display:flex;align-items:center;justify-content:space-between;gap:28px;
+  padding:14px 20px;background:rgba(10,9,8,0.92);backdrop-filter:blur(6px);
+  border-bottom:1px solid var(--line);
+}
+.nav-links{display:flex;align-items:center;gap:28px;}
+nav.topnav a{
+  font-family:var(--font-display);font-size:13px;font-weight:600;letter-spacing:0.14em;
+  text-transform:uppercase;color:var(--dim);text-decoration:none;
+  padding:6px 4px;border-bottom:1px solid transparent;
+  transition:color 0.2s ease, border-color 0.2s ease;
+}
+nav.topnav a:hover, nav.topnav a:focus-visible{color:var(--gold-bright);border-color:var(--gold-bright);outline:none;}
+nav.topnav a.current{color:var(--gold);}
+
+.last-updated-bar{text-align:center;padding:8px 20px 0;}
+.last-updated{font-family:var(--font-mono);font-size:11px;color:var(--dim);letter-spacing:1px;}
+.last-updated .dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--gold);margin-right:6px;vertical-align:middle;}
+
+/* ---------- page hero (eyebrow + title + subtitle) ---------- */
+header{position:relative;z-index:2;padding:36px 24px 18px;text-align:center;}
+.hero-watermark{
+  position:absolute;top:-14px;left:50%;transform:translateX(-50%);
+  width:280px;height:auto;opacity:0.07;pointer-events:none;user-select:none;z-index:0;
+}
+.eyebrow{font-family:var(--font-mono);font-size:11px;color:var(--crimson);letter-spacing:0.35em;text-transform:uppercase;margin-bottom:10px;}
+header h1{margin:0;font-family:var(--font-display);font-weight:700;font-size:clamp(30px, 5vw, 46px);letter-spacing:0.04em;text-transform:uppercase;color:var(--text);}
+header h1 span{color:var(--gold);}
+header p{margin:10px 0 0;color:var(--dim);font-size:13px;font-family:var(--font-mono);}
+
+/* ---------- nft mode tabs (solo / bundles) ---------- */
+.nft-mode-tabs{display:flex;gap:8px;margin:0 0 18px;}
+.nft-mode-tab{
+  font-family:var(--font-display);font-weight:600;font-size:12px;letter-spacing:0.1em;
+  text-transform:uppercase;color:var(--dim);background:transparent;cursor:pointer;
+  border:1px solid var(--line);padding:9px 18px;border-radius:6px;
+  transition:border-color 0.15s ease,color 0.15s ease,background 0.15s ease;
+}
+.nft-mode-tab:hover{color:var(--gold-bright);border-color:var(--gold);}
+.nft-mode-tab.active{color:var(--text);border-color:var(--gold);background:rgba(217,164,65,0.1);}
+@media (max-width:760px){
+  nav.topnav{flex-direction:column;align-items:stretch;gap:14px;}
+  .nav-links{justify-content:center;flex-wrap:wrap;}
+}
+
+/* ---------- item search ---------- */
+.nft-search-wrap{position:relative;max-width:420px;margin:0 auto 28px;}
+.nft-search-input{
+  width:100%;font-family:var(--font-mono);font-size:13px;color:var(--text);
+  background:var(--panel);border:1px solid var(--line);border-radius:8px;
+  padding:11px 14px;outline:none;transition:border-color 0.15s ease;
+}
+.nft-search-input::placeholder{color:var(--dimmer);}
+.nft-search-input:focus{border-color:var(--gold);}
+.nft-search-results{
+  position:absolute;top:calc(100% + 6px);left:0;right:0;
+  background:var(--panel);border:1px solid var(--line);border-radius:8px;
+  max-height:280px;overflow-y:auto;display:none;z-index:15;
+  box-shadow:0 12px 30px rgba(0,0,0,0.4);
+}
+.nft-search-results.open{display:block;}
+.nft-search-row{
+  padding:10px 14px;font-family:var(--font-mono);font-size:12.5px;color:var(--text);
+  cursor:pointer;border-bottom:1px solid var(--line);
+}
+.nft-search-row:last-child{border-bottom:none;}
+.nft-search-row:hover,.nft-search-row.active{background:var(--panel-2);color:var(--gold-bright);}
+.nft-search-empty{padding:12px 14px;font-family:var(--font-mono);font-size:12px;color:var(--dimmer);}
+@keyframes nft-highlight-flash{
+  0%{box-shadow:0 0 0 2px var(--gold);}
+  100%{box-shadow:0 0 0 2px transparent;}
+}
+.nft-highlight{animation:nft-highlight-flash 1.6s ease-out;border-radius:10px;}
+
+.panel-head{display:flex;justify-content:space-between;align-items:center;padding:18px 22px;border-bottom:1px solid var(--line);}
+.panel-head h2{font-family:var(--font-mono);font-size:13px;font-weight:600;letter-spacing:0.5px;margin:0;text-transform:uppercase;color:var(--text);}
+
+.empty-state{
+  padding:60px 20px;text-align:center;font-family:var(--font-mono);color:var(--dim);
+}
+.empty-state .big{font-size:15px;color:var(--text);margin-bottom:8px;}
+.empty-state .small{font-size:12px;line-height:1.6;color:var(--dimmer);}
+.empty-state code{background:var(--panel-2);padding:2px 6px;border-radius:4px;color:var(--gold);}
+
+footer{padding:24px 32px 40px;text-align:center;font-family:var(--font-mono);font-size:11px;color:var(--dimmer);}
+
+/* ---------- NFT tracker page ---------- */
+.nft-page{padding:28px 32px 60px;max-width:1400px;margin:0 auto;}
+.nft-top-row{display:grid;grid-template-columns:340px 340px 340px 340px;gap:24px;margin-bottom:28px;justify-content:center;}
+@media (max-width:1500px){.nft-top-row{grid-template-columns:1fr;justify-content:stretch;}}
+.nft-card-block{margin-bottom:44px;}
+.nft-card-title-row{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:4px;}
+.nft-card-title{
+  font-family:var(--font-display);font-weight:600;font-size:19px;letter-spacing:0.03em;
+  text-transform:uppercase;color:var(--text);text-align:center;
+}
+.mint-now-btn{
+  font-family:var(--font-mono);font-weight:700;font-size:11.5px;letter-spacing:0.4px;
+  color:#08130c;background:#3ECF6E;padding:4px 12px;border-radius:6px;text-decoration:none;
+  white-space:nowrap;box-shadow:0 0 10px rgba(62,207,110,0.35);
+}
+.mint-now-btn:hover{background:#57DB80;}
+.nft-card-mint-time{
+  font-family:var(--font-mono);font-size:10.5px;color:var(--dimmer);text-align:center;margin-bottom:16px;
+}
+.bundle-summary-block{
+  background:var(--panel);border:1px solid var(--line);border-radius:10px;
+  padding:18px 20px 20px;margin-bottom:10px;text-align:center;
+}
+.bundle-summary-title-row{
+  display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:12px;
+}
+.bundle-summary-title{
+  font-family:var(--font-display);font-weight:600;font-size:17px;letter-spacing:0.03em;
+  text-transform:uppercase;color:var(--text);
+}
+.bundle-group-box{
+  border:1px solid var(--line);border-radius:12px;padding:10px;margin-bottom:44px;
+}
+.bundle-member-block{
+  background:var(--panel);border:1px solid var(--line);border-radius:10px;
+  padding:18px 20px;margin-bottom:6px;
+}
+.bundle-member-block:last-child{margin-bottom:0;}
+.bundle-member-layout{display:grid;grid-template-columns:200px 1fr 1fr 1fr;gap:20px;align-items:start;}
+@media (max-width:1300px){.bundle-member-layout{grid-template-columns:1fr;}}
+.bundle-member-title-row{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px;}
+.bundle-member-title{font-family:var(--font-display);font-weight:600;font-size:15px;letter-spacing:0.02em;text-transform:uppercase;color:var(--text);}
+.bundle-member-image-col .meter-rarity-img-large,
+.bundle-member-image-col .meter-rarity-img-empty{max-width:100%;}
+.bundle-member-gauge-col{display:flex;flex-direction:column;align-items:center;}
+.bundle-col-label{
+  font-family:var(--font-mono);font-size:10.5px;letter-spacing:0.6px;text-transform:uppercase;
+  color:var(--dim);margin-bottom:8px;text-align:center;
+}
+.bundle-member-layout .nft-stat-grid{border:none;background:transparent;gap:0;}
+.bundle-member-layout .nft-stat-col{background:transparent;padding:0 0 12px;}
+.bundle-member-layout .nft-stat-col + .nft-stat-col{border-top:1px solid var(--line);padding-top:12px;margin-top:4px;}
+.meter-panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;height:100%;}
+.meter-panel .panel-head h2{font-family:var(--font-mono);font-size:13px;font-weight:600;letter-spacing:0.5px;margin:0;text-transform:uppercase;color:var(--text);}
+.meter-panel-head{justify-content:center;}
+.meter-body{padding:14px 18px 18px;display:flex;flex-direction:column;align-items:center;flex:1;justify-content:center;}
+.image-panel .meter-body{padding:18px;height:100%;justify-content:center;}
+.meter-rarity-img-large{width:100%;max-width:280px;aspect-ratio:1/1;object-fit:cover;border-radius:8px;border:1px solid var(--line);background:var(--panel-2);}
+.odds-breakdown-body{align-items:stretch;padding:0;}
+.odds-breakdown-body .nft-stat-col{padding:16px 20px;}
+.odds-breakdown-body .nft-stat-col + .nft-stat-col{border-top:1px solid var(--line);}
+.top-mints-panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-bottom:28px;}
+.top-mints-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);}
+@media (max-width:900px){.top-mints-row{grid-template-columns:1fr;}}
+.top-mint-item{background:var(--panel);padding:16px 20px;display:flex;flex-direction:column;gap:4px;}
+.top-mint-rank{font-family:var(--font-mono);font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--dim);}
+.top-mint-name{font-family:var(--font-display);font-size:15px;color:var(--text);font-weight:600;text-transform:uppercase;letter-spacing:0.02em;}
+.top-mint-chain{font-family:var(--font-mono);font-size:11px;color:var(--dimmer);}
+.top-mint-pct{font-family:var(--font-mono);font-size:20px;font-weight:700;color:#f2c057;text-shadow:0 0 8px rgba(242,192,87,0.5);}
+.meter-rarity-img-empty{
+  width:100%;max-width:280px;aspect-ratio:1/1;border-radius:8px;border:1px dashed var(--line);
+  display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;
+  font-family:var(--font-mono);font-size:11px;color:var(--dimmer);
+}
+.meter-nft-name{font-family:var(--font-display);font-size:15px;font-weight:600;text-transform:uppercase;color:var(--text);text-align:center;margin-bottom:10px;letter-spacing:0.02em;}
+.meter-chain-label{font-family:var(--font-mono);font-size:12px;font-weight:600;letter-spacing:1px;}
+.meter-chain-label.left{color:var(--ada-chain);}
+.meter-chain-label.right{color:var(--base-chain);}
+.meter-verdict{font-family:var(--font-mono);font-size:13px;color:var(--text);margin-top:6px;text-align:center;}
+.meter-verdict .chainname{font-weight:700;}
+.meter-verdict .chainname.ada{color:var(--ada-chain);}
+.meter-verdict .chainname.base{color:var(--base-chain);}
+.meter-sub{font-family:var(--font-mono);font-size:17px;color:var(--text);margin-top:16px;text-align:center;}
+.nft-stat-grid{display:grid;grid-template-columns:1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden;}
+.nft-stat-col{background:var(--panel);padding:18px 20px;}
+.nft-stat-col h3{font-family:var(--font-mono);font-size:11px;letter-spacing:1px;text-transform:uppercase;margin:0 0 12px;color:var(--dim);}
+.nft-stat-row{display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:12px;padding:4px 0;border-bottom:1px solid var(--line);}
+.nft-stat-row:last-child{border-bottom:none;}
+.nft-stat-row .tier{color:var(--dim);}
+.nft-stat-row .val{color:var(--text);}
+.nft-stat-row .exp{color:var(--dimmer);font-size:10.5px;}
+
+/* ---------- recent mints ticker (full-bleed, auto-scrolling marquee) ---------- */
+.recent-mints-ticker{
+  background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:14px 0;margin-bottom:28px;overflow:hidden;
+  width:100vw;position:relative;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;
+}
+.recent-mints-track{
+  display:flex;gap:22px;width:max-content;
+  animation:recent-mints-scroll 240s linear infinite;
+}
+.recent-mints-track:hover{animation-play-state:paused;}
+@keyframes recent-mints-scroll{
+  from{transform:translateX(0);}
+  to{transform:translateX(-50%);}
+}
+.recent-mint-entry{
+  display:flex;align-items:center;gap:8px;flex-shrink:0;
+  font-family:var(--font-mono);font-size:12px;color:var(--text);white-space:nowrap;
+  padding:0 18px;
+}
+.recent-mint-rank{color:var(--dimmer);font-size:11px;}
+.recent-mint-thumb{
+  width:28px;height:28px;border-radius:5px;object-fit:cover;
+  border:1px solid var(--line);background:var(--panel-2);flex-shrink:0;
+}
+.recent-mint-thumb-empty{
+  width:28px;height:28px;border-radius:5px;border:1px dashed var(--line);
+  background:var(--panel-2);flex-shrink:0;
+}
+.recent-mint-name{max-width:220px;overflow:hidden;text-overflow:ellipsis;}
+.recent-mint-chain{font-size:10px;text-transform:uppercase;letter-spacing:0.5px;}
+.recent-mint-chain.ada{color:var(--ada-chain);}
+.recent-mint-chain.base{color:var(--base-chain);}
