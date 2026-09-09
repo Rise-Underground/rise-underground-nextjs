@@ -1,5 +1,4 @@
 import { Oswald, IBM_Plex_Mono } from 'next/font/google';
-import '../components/site-nav.css';
 import './styles.css';
 
 const oswald = Oswald({
